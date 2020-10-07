@@ -20,27 +20,27 @@ steps:
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'aro-cluster'
     cmd: 'status'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'aro-cluster'
     cmd: 'start-build pytest-calculator --from-dir=/home/vsts/work/1/s --follow'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'aro-cluster'
     cmd: 'rollout latest dc/pytest-calculator'
 - task: oc-cmd@2
   inputs:
     connectionType: 'OpenShift Connection Service'
-    openshiftService: 'pytest-dev-sa'
+    openshiftService: 'aro-cluster'
     cmd: 'rollout status dc pytest-calculator'
 - task: oc-setup@2
   inputs:
-    openshiftService: 'pytest-dev-sa'
-    version: '4.3'
+    openshiftService: 'aro-cluster'
+    version: '4.4'
 - script: |
     sleep 90
     echo "Waiting for pod redeployment"

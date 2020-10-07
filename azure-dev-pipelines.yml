@@ -18,11 +18,19 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
 - task: oc-cmd@2
+  displayName: 'Check Connection'
   inputs:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'aro-cluster'
     cmd: 'status'
 - task: oc-cmd@2
+  displayName: 'Set Project'
+  inputs:
+    connectionType: 'OpenShift Connection Service'
+    openshiftService: 'aro-cluster'
+    cmd: 'project demo'
+- task: oc-cmd@2
+  displayName: 'Start Build'
   inputs:
     connectionType: 'OpenShift Connection Service'
     openshiftService: 'aro-cluster'
